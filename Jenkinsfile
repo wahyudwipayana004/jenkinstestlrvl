@@ -3,7 +3,7 @@ stage('Deploy') {
         bat '''
         echo Deploying...
 
-        xcopy /E /I /Y * C:\\deploy\\test-app
+        xcopy /E /I /Y * D:\\Deploy\\test-app
         '''
     }
 }
