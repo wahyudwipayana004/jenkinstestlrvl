@@ -1,0 +1,1 @@
+<img src="{{ asset('images/PEMKAB BADUNG.png') }}" {{ $attributes->merge(['class' => 'h-9 w-auto']) }} alt="Logo Badung">
