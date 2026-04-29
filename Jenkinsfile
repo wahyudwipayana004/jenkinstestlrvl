@@ -1,37 +1,23 @@
-pipeline {
-    agent any
+stage('Debug') {
+    steps {
+        sh '''
+        echo CURRENT DIRECTORY:
+        pwd
 
-    stages {
+        echo FILES:
+        ls -la
+        '''
+    }
+}
 
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
+stage('Deploy') {
+    steps {
+        sh '''
+        echo Deploying...
 
-        stage('Debug') {
-            steps {
-                bat '''
-                echo CURRENT DIRECTORY:
-                cd
+        mkdir -p /var/jenkins_home/deploy/test-app
 
-                echo FILES:
-                dir
-                '''
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                bat '''
-                echo Deploying...
-
-                robocopy . D:\\Deploy\\test-app /E /NFL /NDL /NJH /NJS /NC /NS
-
-                exit 0
-                '''
-            }
-        }
-
+        cp -r * /var/jenkins_home/deploy/test-app/
+        '''
     }
 }
