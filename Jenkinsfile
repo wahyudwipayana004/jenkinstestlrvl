@@ -9,10 +9,14 @@ pipeline {
             }
         }
 
-     stage('Check Docker') {
+     stage('Security Scan') {
     steps {
         sh '''
-        docker version
+        docker run --rm \
+          -v "$PWD":/app \
+          -w /app \
+          composer:latest \
+          composer audit
         '''
     }
 }
