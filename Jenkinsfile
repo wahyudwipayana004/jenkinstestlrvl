@@ -9,11 +9,13 @@ pipeline {
             }
         }
 
-        stage('Check Composer') {
-            steps {
-                sh 'composer --version'
-            }
-        }
+     stage('Check Docker') {
+    steps {
+        sh '''
+        docker version
+        '''
+    }
+}
 
         stage('Deploy') {
             steps {
