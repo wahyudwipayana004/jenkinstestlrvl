@@ -9,25 +9,16 @@ pipeline {
             }
         }
 
-        stage('Debug') {
+        stage('Check Composer') {
             steps {
-                sh '''
-                echo CURRENT DIRECTORY:
-                pwd
-
-                echo FILES:
-                ls -la
-                '''
+                sh 'composer --version'
             }
         }
 
         stage('Deploy') {
             steps {
                 sh '''
-                echo Deploying...
-
                 mkdir -p /var/jenkins_home/deploy/test-app
-
                 cp -r * /var/jenkins_home/deploy/test-app/
                 '''
             }
