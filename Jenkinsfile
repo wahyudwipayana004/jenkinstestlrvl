@@ -16,7 +16,7 @@ pipeline {
           -v "$PWD":/app \
           -w /app \
           composer:latest \
-          composer audit --locked || true
+          composer audit --locked 
         '''
     }
 }
